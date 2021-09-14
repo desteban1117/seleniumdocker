@@ -27,7 +27,9 @@ pipeline {
         }
         stage('Runing tests') {
             steps {
-        		sh "docker-compose up"
+        		sh "docker-compose up -d hub chrome firefox"
+        		sh "docker-compose up test-module"
+        		sh "docker-compose down "
             }
         }
     }
