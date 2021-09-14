@@ -11,15 +11,15 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                bat "docker build -t='desteban1117/selenium-docker' ."
+                sh "docker build -t='desteban1117/selenium-docker' ."
             }
         }
         stage('Push Image') {
             steps {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'natanosabe', usernameVariable: 'desteban1117')]) {
                     //sh
-			        bat "docker login --username=${user} --password=${pass}"
-			        bat "docker push desteban1117/selenium-docker:latest"
+			        sh "docker login --username=${user} --password=${pass}"
+			        sh "docker push desteban1117/selenium-docker:latest"
 			    }
             }
         }
