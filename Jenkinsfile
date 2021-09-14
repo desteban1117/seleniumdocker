@@ -25,5 +25,10 @@ pipeline {
                 sh "docker push desteban1117/selenium-docker:latest"
             }
         }
+        stage('Runing tests') {
+            steps {
+        		sh "docker-compose up"
+            }
+        }
     }
 }
